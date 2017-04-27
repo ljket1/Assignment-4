@@ -14,3 +14,15 @@ var moreCodeTable = [{
   letter: 'e',
   code: '1111'
 }];
+
+var generateTestData = function () {
+  var data = [];
+  for (i = 0; i < 500000; i++) {
+    var r = Math.floor(Math.random() * 16) + 1;
+    var n = r.toString(2);
+    data.push("0000".substr(n.length) + n)
+  }
+  return data
+};
+
+var myData = generateTestData();
