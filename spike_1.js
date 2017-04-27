@@ -18,11 +18,12 @@ var moreCodeTable = [{
 var generateTestData = function () {
   var data = [];
   for (i = 0; i < 500000; i++) {
-    var r = Math.floor(Math.random() * 16) + 1;
-    var n = r.toString(2);
-    data.push("0000".substr(n.length) + n)
+    var r = Math.floor(Math.random() * 16) + 1; // Generate an Integer between 1 and 16
+    var n = r.toString(2); // Convert to 4 Bit Binary
+    var s = "0000".substr(n.length) + n; // Convert to Padded Binary String
+    data.push(s); // Push String
   }
-  return data
+  return data;
 };
 
 var myData = generateTestData();
