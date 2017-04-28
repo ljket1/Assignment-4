@@ -17,7 +17,7 @@ var morseCodeTableArray = [{
 
 var generateTestData = function () {
   var data = [];
-  for (i = 0; i < 500000; i++) {
+  for (var i = 0; i < 50000; i++) {
     var r = Math.floor(Math.random() * 16) + 1; // Generate an Integer between 1 and 16
     var n = r.toString(2); // Convert to 4 Bit Binary
     var s = "0000".substr(n.length) + n; // Convert to Padded Binary String
@@ -26,4 +26,26 @@ var generateTestData = function () {
   return data;
 };
 
+var compareArray = function (arr1, arr2) {
+  if (arr1.length != arr2.length) {
+    return false;
+  }
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] != arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
 var myData = generateTestData();
+
+for (var i = 0; i < myData.length; i++) {
+  for (var j = 0; j < morseCodeTableArray.length; j++) {
+    if (compareArray(myData[i], morseCodeTableArray[j].code)) {
+      console.log(morseCodeTableArray[j].letter);
+      break
+    }
+    console.log(null);
+  }
+}
