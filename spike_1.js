@@ -26,8 +26,19 @@ var generateTestData = function () {
   return data;
 };
 
+var timer = function(name) {
+    var start = performance.now();
+    return {
+        stop: function() {
+            var time = performance.now() - start;
+            console.log('Timer:', name, 'finished in', time, 'ms');
+        }
+    }
+};
+
 var myData = generateTestData();
 
+var t = timer('String');
 for (var i = 0; i < myData.length; i++) {
   for (var j = 0; j < morseCodeTable.length; j++) {
     if (myData[i] == morseCodeTable[j].code) {
@@ -37,3 +48,4 @@ for (var i = 0; i < myData.length; i++) {
     console.log(null);
   }
 }
+t.stop();

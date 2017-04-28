@@ -38,8 +38,18 @@ var compareArray = function (arr1, arr2) {
   return true;
 };
 
-var myData = generateTestData();
+var timer = function(name) {
+    var start = performance.now();
+    return {
+        stop: function() {
+            var time = performance.now() - start;
+            console.log('Timer:', name, 'finished in', time, 'ms');
+        }
+    }
+};
 
+var myData = generateTestData();
+var t = timer('Array');
 for (var i = 0; i < myData.length; i++) {
   for (var j = 0; j < morseCodeTableArray.length; j++) {
     if (compareArray(myData[i], morseCodeTableArray[j].code)) {
@@ -49,3 +59,4 @@ for (var i = 0; i < myData.length; i++) {
     console.log(null);
   }
 }
+t.stop();
